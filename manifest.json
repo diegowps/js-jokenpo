@@ -1,6 +1,6 @@
 {
     "name": "Jokenpô",
-    "start_url": "/",
+    "start_url": "/jokenpo",
     "display": "standalone",
     "orientation": "portrait",
     "icons": [
