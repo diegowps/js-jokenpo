@@ -1,2 +1,5 @@
 # Jokenpô em javascript
-Teste game JS
+
+Deploy game Jo Ken Pô - "Pedra", "Papel" e "Tesoura"
+
+
