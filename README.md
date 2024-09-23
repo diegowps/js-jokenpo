@@ -1,2 +1,2 @@
-# js-jokenpo
+# Jokenpô em javascript
 Teste game JS
