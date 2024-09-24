@@ -7,14 +7,18 @@
  * 
  */
 
-
 const choices = ['Pedra', 'Papel', 'Tesoura'];
 let userScore = 0;
 let computerScore = 0;
 
-document.getElementById('rock').addEventListener('click', () => playGame('Pedra'));
-document.getElementById('paper').addEventListener('click', () => playGame('Papel'));
-document.getElementById('scissors').addEventListener('click', () => playGame('Tesoura'));
+document.getElementById('play').addEventListener('click', () => {
+    const userChoice = document.querySelector('input[name="choice"]:checked');
+    if (userChoice) {
+        playGame(userChoice.value);
+    } else {
+        alert('Selecione uma jogada primeiro!');
+    }
+});
 
 function playGame(userChoice) {
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];

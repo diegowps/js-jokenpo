@@ -11,10 +11,20 @@
     <div class="container">
         <h1>Jokenpo</h1>
         <div class="choices">
-            <button id="rock">Pedra</button>
-            <button id="paper">Papel</button>
-            <button id="scissors">Tesoura</button>
+            <label>
+                <input type="radio" name="choice" value="Pedra" id="rock">
+                <img src="rock.png" alt="Pedra" class="choice-img">
+            </label>
+            <label>
+                <input type="radio" name="choice" value="Papel" id="paper">
+                <img src="paper.png" alt="Papel" class="choice-img">
+            </label>
+            <label>
+                <input type="radio" name="choice" value="Tesoura" id="scissors">
+                <img src="scissors.png" alt="Tesoura" class="choice-img">
+            </label>
         </div>
+        <button id="play">Jogar</button>
         <div class="result">
             <p id="message"></p>
             <p id="score"></p>
@@ -34,3 +44,4 @@
     </script>
 </body>
 </html>
+
