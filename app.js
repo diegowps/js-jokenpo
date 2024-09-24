@@ -8,7 +8,6 @@
  */
 
 
-
 const choices = ['Pedra', 'Papel', 'Tesoura'];
 let userScore = 0;
 let computerScore = 0;
