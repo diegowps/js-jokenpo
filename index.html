@@ -1,30 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Jokenpô</title>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokenpo</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
-    </head>
-    <body>
-        <h1>Jokenpô</h1>
-        <h2>Jogador:</h2>
-        <img src="img/pedra.png" alt="Pedra" id="pedra" onclick="jogar('pedra')">
-        <img src="img/papel.png" alt="Papel" id="papel" onclick="jogar('papel')">
-        <img src="img/tesoura.png" alt="Tesoura" id="tesoura" onclick="jogar('tesoura')">
-        <form>
-            <input type="radio" name="grupo" id="Pedra">Pedra
-            <input type="radio" name="grupo" id="Papel">Papel
-            <input type="radio" name="grupo" id="Tesoura">Tesoura
-            <p>
-                <input type="button" value="jogar" onclick="jogar()">
-                <input type="reset" value="reset" onclick="limpar()">
-            </p>
-        </form>
-        <hr>
-        <h2>Computador:</h2>
-        <img src="/img/pc.png" alt="PC" id="PC">
-        <hr>
-        <h3 id=" placar">Placar: Jogador 0 x 0 Computador</h3>
-        <script src="app.js"></script>
-    </body>
+</head>
+<body>
+    <div class="container">
+        <h1>Jokenpo</h1>
+        <div class="choices">
+            <button id="rock">Pedra</button>
+            <button id="paper">Papel</button>
+            <button id="scissors">Tesoura</button>
+        </div>
+        <div class="result">
+            <p id="message"></p>
+            <p id="score"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registrado com sucesso:', registration);
+                })
+                .catch(error => {
+                    console.log('Falha ao registrar o Service Worker:', error);
+                });
+        }
+    </script>
+</body>
 </html>

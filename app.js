@@ -7,47 +7,39 @@
  * 
  */
 
-function jogar() {
-    //validação de campos obrigatórios radio button//
-   //teste da função em tela alert('Jogando...'); //teste da função em tela
-   if (document.getElementById('pedra').checked === false && 
-       document.getElementById('papel').checked === false && 
-       document.getElementById('tesoura').checked === false) {
-        alert('Selecione uma opção')
-   } else { //selecionado um radio button, então o jogo pode começar
-       //lógica do jogo(principal)//
-
-       let sorteio = Math.floor(Math.random() * 3)//0 1 2
-       switch (sorteio) {
-           case 0:
-               document.getElementById('pc').src = '/img/pcpedra.png';
-               break;
-           case 1:
-               document.getElementById('pc').src = 'img/pcpapel.png';
-               break;
-           case 2:
-               document.getElementById('pc').src = '/img/pctesoura.png';
-               break;
-       }
-
-       //verificar o vencedor ou declarar empate
-       if ((document.getElementById('pedra').checked === true && sorteio === 0) ||
-           (document.getElementById('papel').checked === true && sorteio === 1) ||
-           (document.getElementById('tesoura').checked === true && sorteio === 2)) {
-           document.getElementById('placar').innerText = 'Empate';
-       } else if ((document.getElementById('pedra').checked === true && sorteio === 2) ||
-           (document.getElementById('papel').checked === true && sorteio === 0) ||
-           (document.getElementById('tesoura').checked === true && sorteio === 1)) {
-           document.getElementById('placar').innerText = 'Jogador venceu';
-       } else {
-           document.getElementById('placar').innerText = 'Computador venceu';
-       }
-   }
 
 
+const choices = ['Pedra', 'Papel', 'Tesoura'];
+let userScore = 0;
+let computerScore = 0;
 
+document.getElementById('rock').addEventListener('click', () => playGame('Pedra'));
+document.getElementById('paper').addEventListener('click', () => playGame('Papel'));
+document.getElementById('scissors').addEventListener('click', () => playGame('Tesoura'));
+
+function playGame(userChoice) {
+    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+    const result = determineWinner(userChoice, computerChoice);
+    displayResult(userChoice, computerChoice, result);
 }
-function limpar() {
-    document.getElementById('pc').src = '/img/pc.png';
-    document.getElementById('placar').innerHTML = '';
+
+function determineWinner(userChoice, computerChoice) {
+    if (userChoice === computerChoice) {
+        return 'Empate';
+    } else if (
+        (userChoice === 'Pedra' && computerChoice === 'Tesoura') ||
+        (userChoice === 'Papel' && computerChoice === 'Pedra') ||
+        (userChoice === 'Tesoura' && computerChoice === 'Papel')
+    ) {
+        userScore++;
+        return 'Você venceu!';
+    } else {
+        computerScore++;
+        return 'Você perdeu!';
+    }
+}
+
+function displayResult(userChoice, computerChoice, result) {
+    document.getElementById('message').textContent = `Você escolheu ${userChoice}, o computador escolheu ${computerChoice}. ${result}`;
+    document.getElementById('score').textContent = `Placar: Você ${userScore} - ${computerScore} Computador`;
 }
